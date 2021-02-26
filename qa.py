@@ -2,6 +2,7 @@ import requests
 import re
 import dateutil.parser
 
+
 def search(query):
     """
     Uses the wbsearchentities action to return entities matching a description.
@@ -9,10 +10,13 @@ def search(query):
     >>> search("John S. Pistole")[0]['id']
     'Q1701660'
     """
-    
-    result = requests.get(f"https://www.wikidata.org/w/api.php?action=wbsearchentities&search={query}&language=en&format=json").json()
 
-    return result['search']
+    result = requests.get(
+        f"https://www.wikidata.org/w/api.php?action=wbsearchentities&search={query}&language=en&format=json"
+    ).json()
+
+    return result["search"]
+
 
 def get_label(entity):
     """
@@ -23,44 +27,50 @@ def get_label(entity):
     'yottagram'
     """
 
-    entity = entity.split('/')[-1]
+    entity = entity.split("/")[-1]
 
-    result = requests.get(f"https://www.wikidata.org/w/api.php?action=wbgetentities&ids={entity}&props=labels&languages=en&format=json").json()
+    result = requests.get(
+        f"https://www.wikidata.org/w/api.php?action=wbgetentities&ids={entity}&props=labels&languages=en&format=json"
+    ).json()
 
-    return result['entities'][entity]['labels']['en']['value']
+    return result["entities"][entity]["labels"]["en"]["value"]
+
 
 def get_prop_value(entity, prop):
     """
     >>> get_prop_value("Q193", "P2067")
     '568360 yottagram'
     """
-    result = requests.get(f"https://www.wikidata.org/w/api.php?action=wbgetentities&ids={entity}&props=claims&language=en&format=json").json()
+    result = requests.get(
+        f"https://www.wikidata.org/w/api.php?action=wbgetentities&ids={entity}&props=claims&language=en&format=json"
+    ).json()
 
     try:
-        claim = result['entities'][entity]['claims'][prop][0]['mainsnak']
+        claim = result["entities"][entity]["claims"][prop][0]["mainsnak"]
     except KeyError:
         return None
 
-    if 'amount' in claim['datavalue']['value']:
-        value = claim['datavalue']['value']['amount'].lstrip('+')
-    elif 'time' in claim['datavalue']['value']:
-        value = claim['datavalue']['value']['time']
-    elif 'id' in claim['datavalue']['value']:
-        value = get_label(claim['datavalue']['value']['id'])
+    if "amount" in claim["datavalue"]["value"]:
+        value = claim["datavalue"]["value"]["amount"].lstrip("+")
+    elif "time" in claim["datavalue"]["value"]:
+        value = claim["datavalue"]["value"]["time"]
+    elif "id" in claim["datavalue"]["value"]:
+        value = get_label(claim["datavalue"]["value"]["id"])
     else:
-        value = claim['datavalue']['value']
+        value = claim["datavalue"]["value"]
 
     try:
-        value += ' ' + get_label(claim['datavalue']['value']['unit'])
+        value += " " + get_label(claim["datavalue"]["value"]["unit"])
     except:
         pass
 
     return value
 
+
 def search_prop(query):
     """
     Returns the property matching a query
-    
+
     >>> search_prop("mass")['id']
     'P2067'
     >>> search_prop("color")['id']
@@ -68,9 +78,12 @@ def search_prop(query):
     >>> search_prop("hair color")['id']
     'P1884'
     """
-    result = requests.get(f"https://www.wikidata.org/w/api.php?action=wbsearchentities&search={query}&type=property&language=en&format=json").json()
- 
-    return result['search'][0]
+    result = requests.get(
+        f"https://www.wikidata.org/w/api.php?action=wbsearchentities&search={query}&type=property&language=en&format=json"
+    ).json()
+
+    return result["search"][0]
+
 
 def answer(question):
     """
@@ -85,9 +98,10 @@ def answer(question):
     """
 
     pass
-    
-if __name__ == '__main__':
-    while(True):
+
+
+if __name__ == "__main__":
+    while True:
         print("")
         question = input("Q: ")
 
