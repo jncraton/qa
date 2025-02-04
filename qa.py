@@ -20,6 +20,10 @@ def search(query):
 
 def get_label(entity):
     """
+    Use the wbgetentities action to get the label for a given entity
+
+    :param entity: Wikidata entity id or URL
+
     >>> get_label("http://www.wikidata.org/entity/Q613726")
     'yottagram'
 
