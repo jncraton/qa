@@ -7,6 +7,9 @@ def search(query):
     """
     Uses the wbsearchentities action to return entities matching a description.
 
+    :param query: Name of entity to search for
+    :return: Wikidata entity id
+
     >>> search("John S. Pistole")[0]['id']
     'Q1701660'
     """
@@ -23,6 +26,7 @@ def get_label(entity):
     Use the wbgetentities action to get the label for a given entity
 
     :param entity: Wikidata entity id or URL
+    :return: English label for entity
 
     >>> get_label("http://www.wikidata.org/entity/Q613726")
     'yottagram'
@@ -42,6 +46,12 @@ def get_label(entity):
 
 def get_prop_value(entity, prop):
     """
+    Return the value for a property
+
+    :param entity: Wikidata entity id
+    :param prop: Wikidata property id
+    :return: English language claim value and label
+
     >>> get_prop_value("Q193", "P2067")
     '568360 yottagram'
     """
@@ -75,6 +85,9 @@ def search_prop(query):
     """
     Returns the property matching a query
 
+    :param query: Natural language name of property to search for
+    :return: Wikidata property id
+
     >>> search_prop("mass")['id']
     'P2067'
     >>> search_prop("color")['id']
@@ -92,6 +105,9 @@ def search_prop(query):
 def answer(question):
     """
     Return an answer to an English language questions.
+
+    :para question: English question to answer
+    :return: Factual answer to the question
 
     Questions are restricted to the following form:
 
