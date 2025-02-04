@@ -3,7 +3,19 @@ Q&A Bot
 
 This program implements a simple bot that can answer questions in a restricted English grammar using knowledge from wikidata.
 
-Several helper functions have been provided, but the primary `answer` function needs an implementation.
+Learning Objectives
+-------------------
+
+After completing this lab, students will be able to:
+
+- Create a simple expert system to answer fact-based questions
+- Explore relationships between entities in a large knowledge base
+
+Task
+----
+
+- Complete `TODO` comments in the code.
+- Provide a working implementation for the `answer` function.
 
 Tests
 -----
