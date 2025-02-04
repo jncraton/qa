@@ -87,6 +87,15 @@ def search_prop(query):
 
 def answer(question):
     """
+    Return an answer to an English language questions.
+
+    Questions are restricted to the following form:
+
+    "What is the {property} of {entity}?"
+
+    Results should be the appropriate information retrieved from wikidata in the
+    format shown in the following examples:
+
     >>> answer("What is the mass of Saturn?")
     'Mass of Saturn (sixth planet from the Sun and the second-largest planet in the Solar System, after Jupiter) is 568360 yottagram.'
 
