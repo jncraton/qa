@@ -91,10 +91,10 @@ def answer(question):
     'Mass of Saturn (sixth planet from the Sun and the second-largest planet in the Solar System, after Jupiter) is 568360 yottagram.'
 
     >>> answer("What is the birthdate of Barack H. Obama?")
-    'Birthdate of Barack Obama (44th president of the United States) is +1961-08-04T00:00:00Z.'
+    'Birthdate of Barack Obama (president of the United States from 2009 to 2017) is +1961-08-04T00:00:00Z.'
 
     >>> answer("What is the official website of Anderson, IN?")
-    'Official Website of Anderson (county seat of Madison County, Indiana, United States) is http://www.cityofanderson.com/.'
+    'Official Website of Anderson (city and county seat of Madison County, Indiana, United States) is http://www.cityofanderson.com/.'
     """
 
     pass
