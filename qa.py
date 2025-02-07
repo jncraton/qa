@@ -1,6 +1,5 @@
 import requests
 import re
-import dateutil.parser
 
 
 def search(query):
