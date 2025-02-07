@@ -14,7 +14,6 @@ After completing this lab, students will be able to:
 Task
 ----
 
-- Complete any `TODO` comments in the code
 - Provide a working implementation for the `answer` function to pass the included doctests
 - Extend the `answer` function to handle questions in another form
 
